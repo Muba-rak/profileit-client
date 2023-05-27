@@ -18,7 +18,7 @@ const Navbar = () => {
         <Link to="/login" className="link">
           <h3 onClick={navHandler}>Sign In</h3>
         </Link>
-        <Link to="/signup" className="link">
+        <Link to="/" className="link">
           <button className="navBtn" onClick={navHandler}>
             Get Started
           </button>
