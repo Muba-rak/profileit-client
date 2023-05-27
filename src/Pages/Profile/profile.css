@@ -1,0 +1,115 @@
+.Welcome {
+    display: flex;
+    /* gap: 100px; */
+    padding: 40px;
+    background: #F5F6F8;
+    justify-content: space-between;
+    height: calc(100vh - 150px);
+
+
+}
+.welcome1{
+    width: 45%;
+}
+.formsection{
+    width: 40%;
+}
+
+.welcome1>h1 {
+    font-family: "Harmattan";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    color: #292929;
+    padding-bottom: 20px;
+}
+
+.welcome1>p {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.btnStory {
+    font-family: "Harmattan";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    color: #f0f8ff;
+    width: 210px;
+    height: 52px;
+    border: none;
+    background: #0086b0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
+}
+
+.btnFeed {
+    font-family: "Harmattan";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    border: none;
+    letter-spacing: 0.02em;
+    width: 210px;
+    height: 52px;
+    border: 1px solid #0086b0;
+    border-radius: 5px;
+    color: #0086b0;
+}
+
+.btn_S {
+    display: flex;
+    gap: 20px;
+    
+}
+
+@media (max-width: 1200px) {
+    .scrabble {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .Welcome {
+        flex-direction: column;
+    }
+    .welcome1{
+        width: 100%;
+    }
+    .formsection{
+        width: 100%;
+        margin-top: 20px;
+    }
+
+}
+
+@media (max-width: 540px) {
+    .Welcome {
+        padding: 10px 10px;
+    }
+
+    .welcome1>h1 {
+        font-size: 55px;
+        line-height: 60px;
+    }
+
+    .welcome1>p {
+        font-size: 18px;
+        line-height: 26px;
+    }
+}
+
+@media (max-width: 540px) {
+    .Welcome {
+        padding: 10px 10px;
+    }
+}
