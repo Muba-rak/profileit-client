@@ -58,12 +58,6 @@ const Register = () => {
             <form onSubmit={createUser}>
               <div className="inputInfo">
                 <label htmlFor="username">Who is Registering ?</label>
-                {/* <input
-                  type="text"
-                  id="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                /> */}
                 <select
                   name=""
                   id=""

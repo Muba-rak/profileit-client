@@ -6,7 +6,7 @@
 .themain{
     background-color: whitesmoke;
     padding: 20px 15px;
-    height: 100vh;
+    min-height: 100vh;
 }
 .simplenav{
     
@@ -45,6 +45,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+   
+}
+.maincard{
+    background-color: #0086b0;
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 3px grey;
+    color: white;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.maincard p{
+    margin: 10px auto;
 }
 @media (max-width: 500px){
     .simplenav{

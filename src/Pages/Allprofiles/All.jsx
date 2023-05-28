@@ -61,17 +61,38 @@ const All = () => {
               </div>
             </div>
           ) : (
-            status.map((pro) => {
-              const { _id, username, email, password } = pro;
-              return (
-                <div className="flexdiv" key={_id}>
-                  <p> {username}</p>
-                  <p>{email} </p>
-                  <p>{show ? password : "✨✨✨✨✨✨✨✨"}</p>
-                  <div></div>
-                </div>
-              );
-            })
+            <div className="card">
+              {status.map((c) => {
+                const {
+                  _id,
+                  username,
+                  address,
+                  hobby,
+                  height,
+                  dob,
+                  fullname,
+                  email,
+                  mothersmaidenname,
+                  password,
+                  gender,
+                } = c;
+                return (
+                  <div key={_id} className="maincard">
+                    <p>Full Name : {fullname}</p>
+                    <p>Email: {email}</p>
+                    <p>Username: {username}</p>
+                    <p> Address: {address} </p>
+                    <p>Date of Birth: {dob}</p>
+                    <div className="hei">
+                      <p>
+                        Height: {height} gender: {gender}{" "}
+                      </p>
+                    </div>
+                    <p>Hobby: {hobby} </p>
+                  </div>
+                );
+              })}
+            </div>
           )}
         </div>
       </main>
