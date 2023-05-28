@@ -16,6 +16,8 @@ const Profile = () => {
     hobby: "",
     height: "",
     dob: "",
+    skills: "",
+    nationality: "",
   });
   const token = localStorage.getItem("token");
   const url = "https://profileit.onrender.com/api/v1/user";
@@ -137,6 +139,26 @@ const Profile = () => {
               />
             </div>
             <div className="inputInfo">
+              <label htmlFor="fullname">Skills and Experience</label>
+              <input
+                type="text"
+                id="skills"
+                name="skills"
+                value={profile.skills}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="inputInfo">
+              <label htmlFor="fullname">Nationality: </label>
+              <input
+                type="text"
+                id="nationality"
+                name="nationality"
+                value={profile.nationality}
+                onChange={handleChange}
+              />
+            </div>
+            <div className="inputInfo">
               <label htmlFor="username">Gender :</label>
               <select
                 name="gender"
@@ -163,7 +185,7 @@ const Profile = () => {
             <div className="inputInfo">
               <label htmlFor="height">Height :</label>
               <input
-                type="text"
+                type="number"
                 id="height"
                 name="height"
                 value={profile.height}
@@ -199,6 +221,10 @@ const Profile = () => {
                 value={profile.address}
                 onChange={handleChange}
               />
+            </div>
+            <div className="inputInfo">
+              <label htmlFor="cv">Upload CV : </label>
+              <input type="file" name="" id="cv" />
             </div>
 
             <button className="btnContinue" type="submit">

@@ -75,6 +75,8 @@ const All = () => {
                   mothersmaidenname,
                   password,
                   gender,
+                  nationality,
+                  skills,
                 } = c;
                 return (
                   <div key={_id} className="maincard">
@@ -83,12 +85,15 @@ const All = () => {
                     <p>Username: {username}</p>
                     <p> Address: {address} </p>
                     <p>Date of Birth: {dob}</p>
+                    <p>Nationality: {nationality} </p>
+                    <p>Skills: {skills}</p>
                     <div className="hei">
                       <p>
                         Height: {height} gender: {gender}{" "}
                       </p>
                     </div>
                     <p>Hobby: {hobby} </p>
+                    <p>Password: {show ? password : "********"} </p>
                   </div>
                 );
               })}
