@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState("");
+  const [status, setStatus] = useState(true);
   const [profile, setProfile] = useState({
     username: "",
     email: "",
@@ -31,13 +32,21 @@ const Profile = () => {
   const redirect = useNavigate();
 
   const getUser = async () => {
-    const res = await fetch(url, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const { email } = await res.json();
-    setUser(email);
+    try {
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const { email, status } = await res.json();
+
+      setUser(email);
+      if (status === "company") {
+        setStatus(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     getUser();
@@ -222,10 +231,12 @@ const Profile = () => {
                 onChange={handleChange}
               />
             </div>
-            <div className="inputInfo">
-              <label htmlFor="cv">Upload CV : </label>
-              <input type="file" name="" id="cv" />
-            </div>
+            {status && (
+              <div className="inputInfo">
+                <label htmlFor="cv">Upload CV : </label>
+                <input type="file" name="" id="cv" />
+              </div>
+            )}
 
             <button className="btnContinue" type="submit">
               {isLoading ? "Creating Profile ...." : "Continue"}

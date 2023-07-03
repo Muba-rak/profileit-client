@@ -28,7 +28,7 @@ const Register = () => {
       const data = await res.json();
       console.log(data);
       if (data.success) {
-        setIsLoading(false)
+        setIsLoading(false);
         redirect("/login");
       }
       if (data.errors) {
@@ -68,6 +68,7 @@ const Register = () => {
                   <option value="company">Company</option>
                   <option value="professor">Professor</option>
                   <option value="student">Student</option>
+                  <option value="consultant">Consultant</option>
                 </select>
               </div>
               <div className="inputInfo">
