@@ -39,11 +39,10 @@ const Profile = () => {
         },
       });
       const { email, status } = await res.json();
-
-      setUser(email);
       if (status === "company") {
         setStatus(false);
       }
+      setUser(email);
     } catch (error) {
       console.log(error);
     }
