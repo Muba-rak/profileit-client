@@ -6,6 +6,7 @@ import All from "./Pages/Allprofiles/All";
 import Students from "./Pages/Assignment/Students";
 import Others from "./Pages/Others/Others";
 import Check from "./components/Check";
+import Allassign from "./Pages/AllAssignment/Allassign";
 // import Private from "./components/Private";
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
           <Route path="/view" element={<All />} />
           <Route path="/assign" element={<Check />} />
           <Route path="/student" element={<Students />} />
-          <Route path="/others" element={<Others />} />
+          <Route path="/others" element={<Allassign />} />
+          <Route path="/others/:id" element={<Others />} />
         </Routes>
       </BrowserRouter>
     </div>
