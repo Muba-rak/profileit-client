@@ -22,7 +22,9 @@ const Navbar2 = () => {
         ProfileIT
       </Link>
       <div className={expand ? "nav-bar" : "nav-bar nav-bar-NX"}>
-        <Link to="/assignment" className="link">Assignment</Link>
+        <Link to="/assign" className="link">
+          Assignment
+        </Link>
         <button className="logoutbtn" onClick={logout}>
           Logout
         </button>
