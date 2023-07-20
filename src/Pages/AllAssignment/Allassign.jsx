@@ -14,15 +14,20 @@ const Allassign = () => {
           All assignments
         </h1>
 
-        <div>
+        <div className="d-flex flex-wrap justify-content-between align-items-center">
           {users.map((user, index) => {
             return (
               <Link to={`/others/${index}`} className="text-decoration-none">
-                <div key={index} className="text-dark bg-body-tertiary">
+                <div
+                  key={index}
+                  className="text-dark bg-body-tertiary my-4 mx-auto rounded-2 p-3"
+                  style={{ width: "18rem" }}
+                >
                   <p>Assignment submitted</p>
                   <p className="text-capitalize">
                     <span>Submitted By</span> : {user}
                   </p>
+                  <p>Date: 18th May, 2023</p>
                 </div>
               </Link>
             );

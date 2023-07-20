@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import "./others.css";
 import Navbar2 from "../../components/Navbar2/Navbar2";
 import Dropdown from "react-bootstrap/Dropdown";
 
 const Others = () => {
+  const textContainer = useRef();
+  const focusInput = () => {
+    textContainer.current.focus();
+  };
+  const [show, setShow] = useState(true);
+  const [showL, setShowL] = useState(true);
+  const [showM, setShowM] = useState(true);
+  const [showA, setShowA] = useState(true);
+  const [showC, setShowC] = useState(true);
+  const [showF, setShowF] = useState(true);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div>
       <Navbar2 />
@@ -16,9 +30,9 @@ const Others = () => {
             <h3 className="fw-lighter fs-4">No Category</h3>
           </div>
         </div>
-        <div className="row border ">
-          <section className="border border-danger h-50 overflow-y-scroll">
-            <div className="px-1 col-12 col-md-7 border border-secondary my-2 py-3">
+        <div className="row border d-block d-lg-flex mt-3 justify-content-between  ">
+          <section className=" h-50 overflow-y-scroll col-12 col-lg-7 ">
+            <div className="px-1  border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Introduction Section</h4>
                 <Dropdown>
@@ -29,35 +43,33 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShow(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Delete Assignment
+                    <Dropdown.Item onClick={() => setShow(true)}>
+                      Hide Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum
-                qui quia officia eius eos reiciendis enim delectus. Non dolore
-                repudiandae minus beatae culpa odit dolores neque aperiam. Sint
-                molestias cum quam. Laudantium ut doloribus omnis non laborum
-                ipsum cupiditate, ipsam voluptatem quod id rem repellat dolore
-                iure? Veritatis, vero laboriosam aperiam natus, tempora minus
-                debitis aspernatur expedita nulla delectus maxime, beatae
-                officiis tenetur. Odio dolorem sequi est ipsam minus assumenda
-                officia eius doloremque architecto tenetur, eveniet quaerat
-                mollitia ducimus dolor laborum totam aperiam quos placeat
-                distinctio. Accusantium maxime quibusdam distinctio molestiae
-                dolores ab blanditiis vero, ipsam vitae voluptatum consectetur
-                nostrum?
+                {show
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti adipisci distinctio, porro nam optio natus assumenda
+                accusamus possimus, at odit saepe laborum laudantium in, iure
+                blanditiis perferendis! Aut nostrum illum ea necessitatibus
+                sequi minus, in consequuntur similique quia minima labore, animi
+                accusantium ab maiores neque suscipit dolorum expedita ipsum,
+                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
+                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
+                aperiam distinctio ab nemo.`}
               </p>
             </div>
-            <div className="px-1 col-12 col-md-7 border border-secondary my-2 py-3">
+            <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Literature Review Section</h4>
                 <Dropdown>
@@ -68,20 +80,33 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShowL(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item onClick={() => setShowL(true)}>
                       Delete Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              <p>
+                {showL
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti adipisci distinctio, porro nam optio natus assumenda
+                accusamus possimus, at odit saepe laborum laudantium in, iure
+                blanditiis perferendis! Aut nostrum illum ea necessitatibus
+                sequi minus, in consequuntur similique quia minima labore, animi
+                accusantium ab maiores neque suscipit dolorum expedita ipsum,
+                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
+                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
+                aperiam distinctio ab nemo.`}
+              </p>
             </div>
-            <div className="px-1 col-12 col-md-7 border border-secondary my-2 py-3">
+            <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Methodology Section</h4>
                 <Dropdown>
@@ -92,20 +117,33 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShowM(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item onClick={() => setShowM(true)}>
                       Delete Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              <p>
+                {showM
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti adipisci distinctio, porro nam optio natus assumenda
+                accusamus possimus, at odit saepe laborum laudantium in, iure
+                blanditiis perferendis! Aut nostrum illum ea necessitatibus
+                sequi minus, in consequuntur similique quia minima labore, animi
+                accusantium ab maiores neque suscipit dolorum expedita ipsum,
+                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
+                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
+                aperiam distinctio ab nemo.`}
+              </p>
             </div>
-            <div className="px-1 col-12 col-md-7 border border-secondary my-2 py-3">
+            <div className="px-1  border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Analysis and Results Section</h4>
                 <Dropdown>
@@ -116,20 +154,33 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShowA(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item onClick={() => setShowA(true)}>
                       Delete Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              <p>
+                {showA
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti adipisci distinctio, porro nam optio natus assumenda
+                accusamus possimus, at odit saepe laborum laudantium in, iure
+                blanditiis perferendis! Aut nostrum illum ea necessitatibus
+                sequi minus, in consequuntur similique quia minima labore, animi
+                accusantium ab maiores neque suscipit dolorum expedita ipsum,
+                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
+                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
+                aperiam distinctio ab nemo.`}
+              </p>
             </div>
-            <div className="px-1 col-12 col-md-7 border border-secondary my-2 py-3">
+            <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Conclusions and Recommendations</h4>
                 <Dropdown>
@@ -140,20 +191,33 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShowC(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item onClick={() => setShowC(true)}>
                       Delete Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
+              <p>
+                {showC
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Corrupti adipisci distinctio, porro nam optio natus assumenda
+                accusamus possimus, at odit saepe laborum laudantium in, iure
+                blanditiis perferendis! Aut nostrum illum ea necessitatibus
+                sequi minus, in consequuntur similique quia minima labore, animi
+                accusantium ab maiores neque suscipit dolorum expedita ipsum,
+                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
+                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
+                aperiam distinctio ab nemo.`}
+              </p>
             </div>
-            <div className="px-1 col-12 col-md-7  border border-secondary my-2 py-3">
+            <div className="px-1   border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
                 <h4 className="fw-light">Final Revised Study</h4>
                 <Dropdown>
@@ -164,13 +228,13 @@ const Others = () => {
                   ></Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-1">
+                    <Dropdown.Item onClick={() => setShowF(false)}>
                       View Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item onClick={focusInput}>
                       Edit Assignment
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item onClick={() => setShowF(true)}>
                       Delete Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -178,7 +242,9 @@ const Others = () => {
               </div>
 
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                {showF
+                  ? ""
+                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Corrupti adipisci distinctio, porro nam optio natus assumenda
                 accusamus possimus, at odit saepe laborum laudantium in, iure
                 blanditiis perferendis! Aut nostrum illum ea necessitatibus
@@ -186,19 +252,24 @@ const Others = () => {
                 accusantium ab maiores neque suscipit dolorum expedita ipsum,
                 quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
                 reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.
+                aperiam distinctio ab nemo.`}
               </p>
             </div>
           </section>
 
-          <section className="comment mt-3 col-12 col-md-7">
+          <section className="comment col-12 col-lg-4 ">
             <h3 className="fw-light">Overall Feedback</h3>
-            <textarea
-              className="form-control shadow-none rounded-2"
-              id="a"
-              rows="10"
-            ></textarea>
-            <button className="btn btn-secondary my-2">Submit Feedback</button>
+            <form className="w-100">
+              <textarea
+                ref={textContainer}
+                className="form-control  rounded-2"
+                id="a"
+                rows="10"
+              ></textarea>
+              <button className="btn btn-secondary my-2">
+                Submit Feedback
+              </button>
+            </form>
           </section>
         </div>
       </section>
