@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 
 const Check = () => {
-  const user = false;
-  // check for students or not
+  const [user, setUser] = useState(true);
+  const token = localStorage.getItem("token");
+  const status = localStorage.getItem("status");
+
   return (
-    <div> {user ? <Navigate to="/student" /> : <Navigate to="/others" />} </div>
+    <>
+      {status === "student" ? (
+        <Navigate to="/student" />
+      ) : (
+        <Navigate to="/others" />
+      )}
+    </>
   );
 };
 

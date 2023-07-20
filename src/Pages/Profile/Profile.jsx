@@ -39,6 +39,7 @@ const Profile = () => {
         },
       });
       const { email, status } = await res.json();
+      localStorage.setItem("status", status);
       if (status === "company") {
         setStatus(false);
       }

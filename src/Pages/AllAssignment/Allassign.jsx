@@ -17,9 +17,12 @@ const Allassign = () => {
         <div className="d-flex flex-wrap justify-content-between align-items-center">
           {users.map((user, index) => {
             return (
-              <Link to={`/others/${index}`} className="text-decoration-none">
+              <Link
+                key={index}
+                to={`/others/${index}`}
+                className="text-decoration-none"
+              >
                 <div
-                  key={index}
                   className="text-dark bg-body-tertiary my-4 mx-auto rounded-2 p-3"
                   style={{ width: "18rem" }}
                 >
