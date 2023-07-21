@@ -4,6 +4,8 @@ import Navbar2 from "../../components/Navbar2/Navbar2";
 import Dropdown from "react-bootstrap/Dropdown";
 import Loading from "../../components/Loading";
 import { Link, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Others = () => {
   const textContainer = useRef();
@@ -19,6 +21,7 @@ const Others = () => {
   const [showF, setShowF] = useState(true);
   const handleSubmit = (e) => {
     e.preventDefault();
+    toast.success("Feedback submitted");
   };
   const { id } = useParams();
   const token = localStorage.getItem("token");
@@ -44,7 +47,7 @@ const Others = () => {
       });
       setIsLoading(false);
       const data = await res.json();
-      console.log(data.post.createdBy.email);
+      setUser(data.post.createdBy.email);
       const { post, success } = data;
       setAssignment({
         introduction: post.introduction,
@@ -69,6 +72,7 @@ const Others = () => {
   return (
     <div>
       <Navbar2 />
+      <ToastContainer />
 
       <section className="container">
         <Link to="/others" className="text-decoration-none">
