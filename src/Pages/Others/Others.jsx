@@ -134,7 +134,7 @@ const Others = () => {
                       Edit Assignment
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => setShowL(true)}>
-                      Delete Assignment
+                      Hide Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -159,7 +159,7 @@ const Others = () => {
                       Edit Assignment
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => setShowM(true)}>
-                      Delete Assignment
+                      Hide Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -209,7 +209,7 @@ const Others = () => {
                       Edit Assignment
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => setShowC(true)}>
-                      Delete Assignment
+                      Hide Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
@@ -234,7 +234,7 @@ const Others = () => {
                       Edit Assignment
                     </Dropdown.Item>
                     <Dropdown.Item onClick={() => setShowF(true)}>
-                      Delete Assignment
+                      Hide Assignment
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
