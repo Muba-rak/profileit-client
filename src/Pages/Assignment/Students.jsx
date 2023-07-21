@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import Navbar2 from "../../components/Navbar2/Navbar2";
 import "./assignment.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Assignment = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [assignment, setAssignment] = useState({
     introduction: "",
     literatureReview: "",
@@ -11,27 +15,58 @@ const Assignment = () => {
     conclusionRecommendation: "",
     revisedEdition: "",
   });
+  const token = localStorage.getItem("token");
   const handleChange = (e) => {
     setAssignment({ ...assignment, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const url = "https://profileit.onrender.com/api/v1/assignment";
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Do something with the uploaded files
-    console.log(files);
+    setIsLoading(true);
+    console.log(assignment);
+    try {
+      setIsLoading(true);
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(assignment),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success) {
+        toast.success("Assignment Submitted");
+      }
+      setIsLoading(false);
+      setAssignment({
+        introduction: "",
+        literatureReview: "",
+        methodology: "",
+        analysisResults: "",
+        conclusionRecommendation: "",
+        revisedEdition: "",
+      });
+    } catch (error) {
+      toast.error("error Submitting, Try Again");
+    }
   };
 
   return (
     <div>
       <Navbar2 />
+      <ToastContainer />
       <h1 style={{ textAlign: "center", color: " #0086b0", marginTop: "20px" }}>
         Upload Assignment
       </h1>
       <section className="container px-2">
         <div className="row">
-          <div className="col border border-secondary">
+          <div className="col border border-secondary bg-body-secondary py-3">
             <h2 className="text-center fw-light fs-4">Assignment</h2>
           </div>
-          <div className="border border-secondary">
+          <div className="border border-secondary bg-body-secondary py-3">
             <h3 className="fw-lighter fs-4">No Category</h3>
           </div>
         </div>
@@ -103,16 +138,17 @@ const Assignment = () => {
               ></textarea>
             </div>
             <div className="mb-3">
-              <label
-                htmlFor="f"
-                className="form-label fs-4 fw-light"
+              <label htmlFor="f" className="form-label fs-4 fw-light">
+                Final Revised Study
+              </label>
+              <textarea
+                className="form-control"
+                id="f"
+                rows="4"
                 name="revisedEdition"
                 value={assignment.revisedEdition}
                 onChange={handleChange}
-              >
-                Final Revised Study
-              </label>
-              <textarea className="form-control" id="f" rows="4"></textarea>
+              ></textarea>
             </div>
             <div>
               <button
@@ -120,7 +156,7 @@ const Assignment = () => {
                 type="submit"
                 style={{ backgroundColor: " #0086b0", color: "white" }}
               >
-                Submit Assignment
+                {isLoading ? "Submitting Assignment" : "Submit Assignment"}
               </button>
             </div>
           </form>

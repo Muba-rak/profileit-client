@@ -1,10 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./others.css";
 import Navbar2 from "../../components/Navbar2/Navbar2";
 import Dropdown from "react-bootstrap/Dropdown";
+import Loading from "../../components/Loading";
+import { Link, useParams } from "react-router-dom";
 
 const Others = () => {
   const textContainer = useRef();
+
   const focusInput = () => {
     textContainer.current.focus();
   };
@@ -17,11 +20,62 @@ const Others = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const { id } = useParams();
+  const token = localStorage.getItem("token");
+  const url = `https://profileit.onrender.com/api/v1/assignment/${id}`;
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState("user");
+  const [assignment, setAssignment] = useState({
+    introduction: "",
+    literatureReview: "",
+    methodology: "",
+    analysisResults: "",
+    conclusionRecommendation: "",
+    revisedEdition: "",
+  });
+
+  const getAssignment = async () => {
+    console.log(id);
+    try {
+      const res = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setIsLoading(false);
+      const data = await res.json();
+      console.log(data.post.createdBy.email);
+      const { post, success } = data;
+      setAssignment({
+        introduction: post.introduction,
+        analysisResults: post.analysisResults,
+        methodology: post.methodology,
+        conclusionRecommendation: post.conclusionRecommendation,
+        revisedEdition: post.revisedEdition,
+        literatureReview: post.literatureReview,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAssignment();
+  }, [id]);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
       <Navbar2 />
+
       <section className="container">
+        <Link to="/others" className="text-decoration-none">
+          <button className="btn btn-secondary mt-3">
+            Back to Assignments
+          </button>
+        </Link>
         <div className="row mt-3">
           <div className="col border border-secondary  bg-body-secondary py-3">
             <h2 className="text-center fw-light fs-4">Assignment</h2>
@@ -31,6 +85,7 @@ const Others = () => {
           </div>
         </div>
         <div className="row border d-block d-lg-flex mt-3 justify-content-between  ">
+          <h4 className="fw-lighter">Submitted By : {user}</h4>
           <section className=" h-50 overflow-y-scroll col-12 col-lg-7 ">
             <div className="px-1  border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -55,19 +110,7 @@ const Others = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <p>
-                {show
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{show ? "" : assignment.introduction}</p>
             </div>
             <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -92,19 +135,7 @@ const Others = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <p>
-                {showL
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{showL ? "" : assignment.literatureReview}</p>
             </div>
             <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -129,19 +160,7 @@ const Others = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <p>
-                {showM
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{showM ? "" : assignment.methodology}</p>
             </div>
             <div className="px-1  border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -166,19 +185,7 @@ const Others = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <p>
-                {showA
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{showA ? "" : assignment.analysisResults}</p>
             </div>
             <div className="px-1 border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -203,19 +210,7 @@ const Others = () => {
                   </Dropdown.Menu>
                 </Dropdown>
               </div>
-              <p>
-                {showC
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{showC ? "" : assignment.conclusionRecommendation}</p>
             </div>
             <div className="px-1   border border-secondary my-2 py-2">
               <div className="d-flex align-items-center justify-content-between gap-5">
@@ -241,25 +236,13 @@ const Others = () => {
                 </Dropdown>
               </div>
 
-              <p>
-                {showF
-                  ? ""
-                  : ` Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Corrupti adipisci distinctio, porro nam optio natus assumenda
-                accusamus possimus, at odit saepe laborum laudantium in, iure
-                blanditiis perferendis! Aut nostrum illum ea necessitatibus
-                sequi minus, in consequuntur similique quia minima labore, animi
-                accusantium ab maiores neque suscipit dolorum expedita ipsum,
-                quae laudantium? Aliquid doloribus, culpa ex veniam praesentium
-                reprehenderit est sunt cumque, ipsum in earum eveniet, labore
-                aperiam distinctio ab nemo.`}
-              </p>
+              <p>{showF ? "" : assignment.revisedEdition}</p>
             </div>
           </section>
 
           <section className="comment col-12 col-lg-4 ">
             <h3 className="fw-light">Overall Feedback</h3>
-            <form className="w-100">
+            <form className="w-100" onSubmit={handleSubmit}>
               <textarea
                 ref={textContainer}
                 className="form-control  rounded-2"
