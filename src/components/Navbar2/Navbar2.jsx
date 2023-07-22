@@ -17,7 +17,7 @@ const Navbar2 = () => {
   };
 
   return (
-    <div className="navBar anothernav py-2">
+    <div className="navBar anothernav py-2 z-2">
       <Link to="/profile" className="link">
         ProfileIT
       </Link>
