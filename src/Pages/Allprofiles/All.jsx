@@ -37,7 +37,7 @@ const All = () => {
       <Navbar2 />
       <main className="themain">
         <div className="simplenav">
-          <h1>Lists of Profile You have Created</h1>
+          <h1 className="fw-light fs-4">Lists of Profile You have Created</h1>
           <div>
             <button className="viewpassword" onClick={() => reveal()}>
               {show ? "Hide Password" : "View Password"}
@@ -47,11 +47,11 @@ const All = () => {
 
         <div className="maincontent">
           {isLoading ? (
-            <div className="loader">
+            <div className="loader vh-100 d-flex justify-content-center align-items-center">
               <div>
                 <Circles
-                  height="100"
-                  width="100"
+                  height="200"
+                  width="200"
                   color="#0086b0"
                   ariaLabel="circles-loading"
                   wrapperStyle={{}}

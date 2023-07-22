@@ -55,7 +55,7 @@
 .maincard{
     background-color: #0086b0;
     width: 300px;
-    height: 320px;
+    height: auto;
     border-radius: 10px;
     box-shadow: 2px 2px 5px 3px grey;
     color: white;
