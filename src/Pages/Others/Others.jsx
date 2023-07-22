@@ -38,7 +38,6 @@ const Others = () => {
   });
 
   const getAssignment = async () => {
-    console.log(id);
     try {
       const res = await fetch(url, {
         headers: {
