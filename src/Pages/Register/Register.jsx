@@ -15,8 +15,8 @@ const Register = () => {
 
   const redirect = useNavigate();
 
-  const createUser = async (e) => {
-    e.preventDefault();
+  const createUser = async (event) => {
+    event.preventDefault();
     try {
       setIsLoading(true);
       const res = await fetch(url, {
@@ -43,6 +43,7 @@ const Register = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <Navbar />
@@ -91,7 +92,11 @@ const Register = () => {
                 />
                 <small style={{ color: "red" }}>{passwordError} </small>
               </div>
-              <button className="btnContinue" type="submit">
+              <button
+                className="btnContinue"
+                type="submit"
+                disabled={isLoading}
+              >
                 {isLoading ? "Registering..." : "Continue"}
               </button>
             </form>
